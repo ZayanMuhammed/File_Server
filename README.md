@@ -6,6 +6,10 @@ A simple yet powerful file sharing web application built with Node.js and Expres
 ![Node.js](https://img.shields.io/badge/node.js-18+-brightgreen.svg)
 ![License](https://img.shields.io/badge/license-ISC-blue.svg)
 
+
+<img width="1214" height="619" alt="image" src="https://github.com/user-attachments/assets/a11c374d-cf31-4a96-819b-ee540e0ade83" />
+
+
 ## 🚀 Features
 
 - **Drag & Drop File Upload**: Modern, intuitive file upload interface
