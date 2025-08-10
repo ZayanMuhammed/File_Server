@@ -287,8 +287,8 @@ This project is licensed under the ISC License. See the `LICENSE` file for detai
 
 **Zayan Muhammed**
 
-- GitHub: [@zayanmuhammed](https://github.com/zayanmuhammed)
-- Email: zayan@example.com
+- GitHub: [@ZayanMuhammed](https://github.com/ZayanMuhammed)
+- Email: zayan.shameermv@gmail.com
 
 ## 🙏 Acknowledgments
 
