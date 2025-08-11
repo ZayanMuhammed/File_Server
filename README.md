@@ -312,7 +312,7 @@ This project is actively maintained. Feel free to report issues or suggest impro
 
 ### 🚨 Security Note
 
-This application is intended for development and testing purposes. For production use, please consider:
+This application is intended for development and testing purposes and local use. For production use, please consider:
 
 - Adding authentication and authorization
 - Implementing file type validation
