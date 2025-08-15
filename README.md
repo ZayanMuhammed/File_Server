@@ -6,6 +6,10 @@ A simple yet powerful file sharing web application built with Node.js and Expres
 ![Node.js](https://img.shields.io/badge/node.js-18+-brightgreen.svg)
 ![License](https://img.shields.io/badge/license-ISC-blue.svg)
 
+
+<img width="1214" height="619" alt="image" src="https://github.com/user-attachments/assets/a11c374d-cf31-4a96-819b-ee540e0ade83" />
+
+
 ## 🚀 Features
 
 - **Drag & Drop File Upload**: Modern, intuitive file upload interface
@@ -197,6 +201,10 @@ fileshare/
 
 ## 🔐 Login Module
 
+<img width="706" height="380" alt="image" src="https://github.com/user-attachments/assets/57f63cfd-cd13-462f-b40b-8b8fbace9d4e" />
+
+
+
 A minimal login gateway is available under login/ and runs on port 8080 by default.
 
 - Install and run:
@@ -287,8 +295,8 @@ This project is licensed under the ISC License. See the `LICENSE` file for detai
 
 **Zayan Muhammed**
 
-- GitHub: [@zayanmuhammed](https://github.com/zayanmuhammed)
-- Email: zayan@example.com
+- GitHub: [@ZayanMuhammed](https://github.com/ZayanMuhammed)
+- Email: zayan.shameermv@gmail.com
 
 ## 🙏 Acknowledgments
 
@@ -304,7 +312,7 @@ This project is actively maintained. Feel free to report issues or suggest impro
 
 ### 🚨 Security Note
 
-This application is intended for development and testing purposes. For production use, please consider:
+This application is intended for development and testing purposes and local use. For production use, please consider:
 
 - Adding authentication and authorization
 - Implementing file type validation
