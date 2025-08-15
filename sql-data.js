@@ -43,8 +43,12 @@ function loadfiles() {
         .then(response => response.json())
         .then(files => {
             const fileListElement = document.getElementById('Mylist');
+            // Clear existing list items
+            fileListElement.innerHTML = '';
+            
             files.forEach(file => {
                 const listItem = document.createElement('li');
+                const Button = document.createElement('button');
 
                 // Create download link
                 const downloadLink = document.createElement('a');
@@ -62,7 +66,24 @@ function loadfiles() {
                     this.style.textDecoration = 'none';
                 });
 
+                // Style and configure the download button
+                Button.textContent = 'Download';
+                Button.className = 'list-item-btn';
+                Button.setAttribute('data-filename', file);
+                
+                // Add download functionality
+                Button.addEventListener('click', function() {
+                    // Create a temporary link and trigger download
+                    const tempLink = document.createElement('a');
+                    tempLink.href = `/uploads/${file}`;
+                    tempLink.download = file;
+                    document.body.appendChild(tempLink);
+                    tempLink.click();
+                    document.body.removeChild(tempLink);
+                });
+
                 listItem.appendChild(downloadLink);
+                listItem.appendChild(Button);
                 fileListElement.appendChild(listItem);
             });
         })
@@ -92,7 +113,7 @@ function toggleBackToTopButton() {
 
 window.addEventListener('scroll', toggleBackToTopButton, { passive: true });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const backToTopButton = document.getElementById('myBtn');
     if (backToTopButton) backToTopButton.style.display = 'none';
     toggleBackToTopButton();

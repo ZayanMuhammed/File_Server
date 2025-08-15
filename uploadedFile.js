@@ -140,7 +140,7 @@ app.get('/files', (req, res) => {
 
 app.listen(port, () => {
 
-    console.log('web at http://localhost:3000/data.htm')
+    console.log('web at http://localhost:3000/fileshare.htm')
     console.log(`Server listening at http://localhost:${port}`);
 
 });
