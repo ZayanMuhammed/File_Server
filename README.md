@@ -5,6 +5,7 @@ A simple yet powerful file sharing web application built with Node.js and Expres
 ![File Share Demo](https://img.shields.io/badge/status-active-brightgreen.svg)
 ![Node.js](https://img.shields.io/badge/node.js-18+-brightgreen.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![GitHub repo size](https://img.shields.io/github/repo-size/caelestia-dots/shell?style=for-the-badge&labelColor=101418&color=d3bfe6)
 
 
 <img width="1214" height="619" alt="image" src="https://github.com/user-attachments/assets/a11c374d-cf31-4a96-819b-ee540e0ade83" />
