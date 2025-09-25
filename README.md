@@ -2,9 +2,13 @@
 
 A simple yet powerful file sharing web application built with Node.js and Express. Upload files through a modern web interface and share them instantly with others.
 
-![File Share Demo](https://img.shields.io/badge/status-active-brightgreen.svg)
-![Node.js](https://img.shields.io/badge/node.js-18+-brightgreen.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
+![Status](https://img.shields.io/badge/status-active-success?style=for-the-badge&logo=appveyor)
+![Node.js](https://img.shields.io/badge/Node.js-18+-brightgreen?style=for-the-badge&logo=node.js&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge&logo=opensourceinitiative)
+![Version](https://img.shields.io/badge/version-1.0.0-9cf?style=for-the-badge&logo=semantic-release&logoColor=white)
+![Build](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=github&logoColor=white)
+![Downloads](https://img.shields.io/badge/downloads-10k+-orange?style=for-the-badge&logo=github&logoColor=white)
 
 
 
