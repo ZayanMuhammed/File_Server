@@ -1,4 +1,4 @@
-const { load } = require("firebase-tools/lib/commands");
+const socket = io();
 
 async function uploadFile() {
     const fileInput = document.getElementById('file');
@@ -32,9 +32,17 @@ async function uploadFile() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
+
+
+addEventListener("DOMContentLoaded", function () {
+
+    const power = document.getElementById('power');
+    power.addEventListener('click', function () {
+        alert('shutting down fileserver (not machine)');
+        socket.emit("shutdown", true);
+        window.location.reload();
+    })
     // Your code to execute after the DOM is fully loaded and parsed goes here
-    alert("DOM fully loaded and parsed!");
     loadfiles();
 });
 
@@ -45,7 +53,7 @@ function loadfiles() {
             const fileListElement = document.getElementById('Mylist');
             // Clear existing list items
             fileListElement.innerHTML = '';
-            
+
             files.forEach(file => {
                 const listItem = document.createElement('li');
                 const Button = document.createElement('button');
@@ -70,9 +78,9 @@ function loadfiles() {
                 Button.textContent = 'Download';
                 Button.className = 'list-item-btn';
                 Button.setAttribute('data-filename', file);
-                
+
                 // Add download functionality
-                Button.addEventListener('click', function() {
+                Button.addEventListener('click', function () {
                     // Create a temporary link and trigger download
                     const tempLink = document.createElement('a');
                     tempLink.href = `/uploads/${file}`;
@@ -99,7 +107,9 @@ function scrollToTop() {
     });
 }
 
-function top() { scrollToTop(); }
+function scrollTopButton() {
+    scrollToTop();
+}
 
 function toggleBackToTopButton() {
     const backToTopButton = document.getElementById('myBtn');

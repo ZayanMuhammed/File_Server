@@ -15,10 +15,6 @@ app.get('/run-script', (req, res) => {
         console.log('=== EXEC RESULTS ===');
         console.log('Execution time:', (endTime - startTime), 'ms');
         console.log('Error:', error);
-        console.log('Stdout length:', stdout ? stdout.length : 0);
-        console.log('Stdout content:', JSON.stringify(stdout));
-        console.log('Stderr length:', stderr ? stderr.length : 0);
-        console.log('Stderr content:', JSON.stringify(stderr));
         console.log('===================');
         
         if (error) {

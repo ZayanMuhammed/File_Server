@@ -41,9 +41,12 @@ Open the login page
 http://localhost:8080/login.htm
 ```
 
-Default credentials (change these!)
+Default credentials
 - Username: admin
 - Password: Password123
+
+[!IMPORTANT]
+change the Default credentials
 
 What happens on login
 - On successful credentials, the frontend calls:

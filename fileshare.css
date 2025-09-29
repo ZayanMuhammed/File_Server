@@ -1,6 +1,8 @@
 body {
     background-color: #00000f;
     color: #fff;
+    margin: 0;
+    padding: 0;
 }
 
 .bookmarkBtn {
@@ -798,4 +800,92 @@ h1 {
 
 button {
     margin-left: 10px;
+}
+
+.power {
+    display: inline-block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    border: 0px solid transparent;
+    background-color: rgba(237, 77, 77, 0.08);
+    border-radius: 1.25em;
+    transition: transform 0.2s ease-in-out;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.power:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 0.5s;
+
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+.ver {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    z-index: 1000;
+    color: #fff;
+    /* text color */
+    background: rgba(0, 0, 0, 0.5);
+    /* optional: semi-transparent bg */
+    padding: 3px 10px;
+    /* optional: space around text */
+    border-radius: 1px;
+    /* optional: rounded corners */
+
+    /* make sure it stays on top */
+
 }

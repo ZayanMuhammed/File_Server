@@ -2,18 +2,20 @@
 <html lang="en">
 
 <head>
-    <title>file share</title>
+    <title>file Server</title>
     <meta charset="UTF-8">
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="./client.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./fileshare.css">
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
-    <script src="./sql-data.js"></script>
+
 </head>
 
 <body>
     <center>
         <!-- head -->
-        <h1 class="gradient-text">Upload File</h1>
+        <h1 class="gradient-text">File Server</h1>
         <br><br>
         <h2 id="Ftext" class="Ftext"></h2>
         <!-- upload -->
@@ -30,7 +32,7 @@
                 </svg>
             </div>
             <div class="text">
-                <span>Click to upload image</span>
+                <span>Click to upload file</span>
             </div>
             <input id="file" type="file">
         </label>
@@ -38,10 +40,9 @@
         <!-- upload_button -->
         <button class="bookmarkBtn" onclick="uploadFile()" id="upload">
             <span class="IconContainer">
-                <svg viewBox="0 0 384 512" height="0.9em" class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000">
                     <path
-                        d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z">
-                    </path>
+                        d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
                 </svg>
             </span>
             <p class="text">Upload</p>
@@ -72,7 +73,7 @@
     </ul>
 
     <!-- back top button -->
-    <button class="button" onclick="scrollToTop();" id="myBtn">
+    <button class="button" onclick="scrollTopButton();" id="myBtn">
         <svg class="svgIcon" viewBox="0 0 384 512">
             <path
                 d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z">
@@ -93,6 +94,14 @@
                 </svg></span>
         </button>
     </center>
+    <!-- shutdown button -->
+    <button class="power" id="power">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#c01c28">
+            <path
+                d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-84 31.5-156.5T197-763l56 56q-44 44-68.5 102T160-480q0 134 93 227t227 93q134 0 227-93t93-227q0-67-24.5-125T707-707l56-56q54 54 85.5 126.5T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-40-360v-440h80v440h-80Z" />
+        </svg>
+    </button>
+    <h4 class="ver">1.01.0</h6>
 </body>
 
 </html>

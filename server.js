@@ -3,12 +3,35 @@ const mysql = require('mysql');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const { Server } = require('socket.io');
+const http = require('http');
+const dotenv = require('dotenv');
 
-
+dotenv.config();
 
 const app = express();
 
-const port = 3000;
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors: { origin: "*" } // allow all origins for testing
+});
+
+io.on("connection", (socket) => {
+    console.log("user connected : " + socket.id);
+
+    socket.on("shutdown", (data) => {
+        if (data === true) {
+            console.log("Shutting down gracefully...");
+            process.exit(0);
+        }
+    });
+
+});
+
+
+
+
+const port = process.env.PORT;
 
 
 
@@ -40,10 +63,10 @@ app.use('/uploads', express.static('uploads'));
 let db;
 try {
     db = mysql.createPool({
-        host: 'localhost',
-        user: '', //your mariadb user
-        password: '', //your mariadb password
-        database: '', //your mariadb database
+        host: process.env.DB_HOST,
+        user: process.env.DB_USRNAME, //your mariadb user
+        password: process.env.DB_PASSWORD, //your mariadb password
+        database: process.env.DB, //your mariadb database
         acquireTimeout: 60000,
         timeout: 60000,
         reconnect: true
@@ -138,7 +161,7 @@ app.get('/files', (req, res) => {
 
 
 
-app.listen(port, () => {
+server.listen(port, () => {
 
     console.log('web at http://localhost:3000/fileshare.htm')
     console.log(`Server listening at http://localhost:${port}`);

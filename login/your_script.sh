@@ -6,7 +6,7 @@ echo "Current directory: $(pwd)"
 echo "Script started at: $(date)"
 
 echo "Changing to data directory..."
-cd /path/to/the/fileshare/ || {
+cd ../ || {
     echo "ERROR: Failed to change to data directory"
     exit 1
 }
@@ -17,11 +17,11 @@ ls -la
 
 echo "Starting Node.js script in background..."
 # Check if server is already running
-if pgrep -f "node uploadedFile.js" > /dev/null; then
+if pgrep -f "node server.js" > /dev/null; then
     echo "Server is already running"
 else
     # Start the server in background
-    nohup node uploadedFile.js > server.log 2>&1 &
+    nohup node server.js > server.log 2>&1 &
     SERVER_PID=$!
     echo "Server started with PID: $SERVER_PID"
     

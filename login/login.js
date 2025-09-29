@@ -1,3 +1,5 @@
+const socket = io();
+
 function handleSubmit(event) {
     event.preventDefault(); // Stop form from reloading the page
 
@@ -5,6 +7,7 @@ function handleSubmit(event) {
     const password = document.getElementById("password").value;
 
     if (username == "admin" && password == "Password123") { //make sure to change this
+
         console.log('=== DEBUG: Starting script execution ===');
 
         fetch('/run-script') // Send request to a server endpoint
@@ -16,7 +19,7 @@ function handleSubmit(event) {
                 console.log('Script output:', data);
                 alert('Script executed: ' + data);
                 // Redirect after script completes
-                window.location.replace("http://localhost:3000/data.htm");
+                window.location.replace("http://localhost:3000/fileshare.htm");
             })
             .catch(error => {
                 console.error('Fetch error:', error);

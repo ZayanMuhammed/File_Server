@@ -5,7 +5,7 @@ A simple yet powerful file sharing web application built with Node.js and Expres
 ![Status](https://img.shields.io/badge/status-active-00ffea?style=for-the-badge&logo=appveyor&logoColor=white&labelColor=000000)
 ![Node.js](https://img.shields.io/badge/Node.js-18+-3399ff?style=for-the-badge&logo=node.js&logoColor=white&labelColor=000000)
 ![License](https://img.shields.io/badge/License-MIT-ff3cac?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=000000)
-![Version](https://img.shields.io/badge/version-1.0.0-ff9900?style=for-the-badge&logo=semantic-release&logoColor=white&labelColor=000000)
+![Version](https://img.shields.io/badge/version-1.1.0-ff9900?style=for-the-badge&logo=semantic-release&logoColor=white&labelColor=000000)
 
 
 <img width="1214" height="619" alt="image" src="https://github.com/user-attachments/assets/a11c374d-cf31-4a96-819b-ee540e0ade83" />
@@ -28,6 +28,10 @@ A simple yet powerful file sharing web application built with Node.js and Expres
 - **File Handling**: Multer middleware
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
 - **Storage**: Local filesystem
+
+
+[!NOTE]
+New update!!: Power button to shutdown server
 
 ## 📦 Installation
 
@@ -182,6 +186,7 @@ GET /uploads/{filename}
 
 ```
 fileshare/
+├── .env                    # Credentials and vars
 ├── uploadedFile.js          # Main server file
 ├── fileshare.htm           # Main web interface
 ├── fileshare.css           # Styles for the interface
@@ -269,15 +274,15 @@ const upload = multer({
 
 ### Environment Variables
 
-Create a `.env` file for configuration:
+[!IMPORTANT]
+Note that there is a .env file to configure to your liking!
 
 ```env
 PORT=3000
 DB_HOST=localhost
 DB_USER=fileshare_user
 DB_PASSWORD=your_password
-DB_NAME=fileshare
-UPLOAD_DIR=uploads
+DB=db_name
 ```
 
 ## 🤝 Contributing
@@ -311,8 +316,7 @@ This project is actively maintained. Feel free to report issues or suggest impro
 
 ---
 
-### 🚨 Security Note
-
+[!CAUTION]
 This application is intended for development and testing purposes and local use. For production use, please consider:
 
 - Adding authentication and authorization
