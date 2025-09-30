@@ -1,38 +1,25 @@
 const socket = io();
 
+// Hardcoded login handler
 function handleSubmit(event) {
-    event.preventDefault(); // Stop form from reloading the page
+    event.preventDefault(); // prevent page reload
 
-    const username = document.getElementById("username").value;
+    const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value;
 
-    if (username == "admin" && password == "Password123") { //make sure to change this
-
-        console.log('=== DEBUG: Starting script execution ===');
-
-        fetch('/run-script') // Send request to a server endpoint
-            .then(response => {
-                console.log('Response status:', response.status);
-                return response.text();
-            })
-            .then(data => {
-                console.log('Script output:', data);
-                alert('Script executed: ' + data);
-                // Redirect after script completes
-                window.location.replace("http://localhost:3000/fileshare.htm");
-            })
-            .catch(error => {
-                console.error('Fetch error:', error);
-                alert('Error running script: ' + error.message);
-            });
+    if (username === "admin" && password === "Password123") {
+        socket.emit("auth", 'true');           // notify server
+        localStorage.setItem("auth", "true");  // mark as logged in locally
+        window.location.href = "/fileshare.htm"; // redirect to file share
+    } else {
+        alert("Wrong credentials, please try again.");
     }
-    else {
-        alert("Wrong,pls Try again")
-    }
-
-
 }
 
+// Link to GitHub
 function Starongithub() {
-    window.location.replace("https://github.com/ZayanMuhammed/fileshare");
+    window.open("https://github.com/ZayanMuhammed/fileshare", "_blank");
 }
+
+// Attach form submit
+document.getElementById("loginForm").addEventListener("submit", handleSubmit);

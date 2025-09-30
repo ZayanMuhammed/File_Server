@@ -1,5 +1,18 @@
 const socket = io();
 
+let localauth = localStorage.getItem("auth");
+
+if (!localauth || localauth === 'false') {
+    window.location.replace("/auth-failed.htm");
+}
+
+let auth = localauth;
+socket.on("auth", (data) => {
+    auth = data;
+    localStorage.setItem("auth", data); // store updated auth
+});
+
+
 async function uploadFile() {
     const fileInput = document.getElementById('file');
     const file = fileInput.files[0];
@@ -20,7 +33,6 @@ async function uploadFile() {
 
         if (response.ok) {
             alert('File uploaded successfully!');
-            // Refresh the file list
             loadfiles();
         } else {
             alert('File upload failed.');
@@ -34,7 +46,22 @@ async function uploadFile() {
 
 
 
+
+
 addEventListener("DOMContentLoaded", function () {
+
+    // Logout button
+    const logoutBtn = document.getElementById('logout');
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function () {
+            localStorage.setItem("auth", "false");
+
+            socket.emit("auth", "false");
+
+            window.location.replace("/login/login.htm");
+        });
+    }
 
     const power = document.getElementById('power');
     power.addEventListener('click', function () {

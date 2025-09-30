@@ -19,14 +19,21 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
     console.log("user connected : " + socket.id);
 
+
     socket.on("shutdown", (data) => {
         if (data === true) {
             console.log("Shutting down gracefully...");
             process.exit(0);
         }
     });
+    socket.on("auth", (data) => {
+        console.log("auth is " + data);
+    })
 
 });
+
+
+
 
 
 

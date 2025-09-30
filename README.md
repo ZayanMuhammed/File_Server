@@ -5,7 +5,7 @@ A simple yet powerful file sharing web application built with Node.js and Expres
 ![Status](https://img.shields.io/badge/status-active-00ffea?style=for-the-badge&logo=appveyor&logoColor=white&labelColor=000000)
 ![Node.js](https://img.shields.io/badge/Node.js-18+-3399ff?style=for-the-badge&logo=node.js&logoColor=white&labelColor=000000)
 ![License](https://img.shields.io/badge/License-MIT-ff3cac?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=000000)
-![Version](https://img.shields.io/badge/version-1.1.0-ff9900?style=for-the-badge&logo=semantic-release&logoColor=white&labelColor=000000)
+![Version](https://img.shields.io/badge/version-1.2.0-ff9900?style=for-the-badge&logo=semantic-release&logoColor=white&labelColor=000000)
 
 
 <img width="1214" height="619" alt="image" src="https://github.com/user-attachments/assets/a11c374d-cf31-4a96-819b-ee540e0ade83" />
@@ -20,6 +20,7 @@ A simple yet powerful file sharing web application built with Node.js and Expres
 - **CORS Enabled**: Cross-origin requests supported
 - **Responsive Design**: Works on desktop and mobile devices
 - **Real-time Updates**: File list refreshes automatically after uploads
+- **Has Auth for Security**: check if login first then only allowed in page
 
 ## 🛠️ Technology Stack
 
@@ -30,8 +31,8 @@ A simple yet powerful file sharing web application built with Node.js and Expres
 - **Storage**: Local filesystem
 
 
-[!NOTE]
-New update!!: Power button to shutdown server
+>[!NOTE]
+>New update!! v1.2.0: Huge security update
 
 ## 📦 Installation
 
@@ -68,6 +69,9 @@ New update!!: Power button to shutdown server
    ```
    http://localhost:3000/fileshare.htm
    ```
+   
+>[!TIP]
+>If you are lazy like me just use the setup.sh file
 
 ## 🗄️ Database Setup (Optional)
 
@@ -124,7 +128,7 @@ sudo pacman -S mariadb
    FLUSH PRIVILEGES;
    ```
 
-4. **Update database configuration** in `uploadedFile.js`:
+4. **Update database configuration** in `server.js`:
    ```javascript
    const db = mysql.createPool({
        host: 'localhost',
@@ -164,7 +168,7 @@ The server provides the following REST API endpoints:
 POST /upload
 Content-Type: multipart/form-data
 
-Form field: uploadedFile (file)
+Form field: server (file)
 ```
 
 #### List Files
@@ -187,20 +191,21 @@ GET /uploads/{filename}
 ```
 fileshare/
 ├── .env                    # Credentials and vars
-├── uploadedFile.js          # Main server file
+├── auth-failed.htm    # auth fail page
+├── auth-failed.css    # style for fail page
+├── server.js          # Main server file
 ├── fileshare.htm           # Main web interface
 ├── fileshare.css           # Styles for the interface
-├── sql-data.js             # Frontend JavaScript
+├── setup.sh                # for lazy devs like me 
+├── client.js             # Frontend JavaScript
 ├── install-mariadb.sh      # Database installation script
 ├── package.json            # Node.js dependencies
 ├── uploads/                # Directory for uploaded files
 ├── assets/                 # Static assets (favicon, etc.)
-├── login/                  # Login gateway (separate express server)
-│   ├── startweb.js         # Serves login UI and exposes /run-script
+├── login/                  # Login gateway
 │   ├── login.htm           # Login page
 │   ├── login.css           # Login styles
 │   ├── login.js            # Login client logic
-│   ├── your_script.sh      # Starts main server (edit path inside)
 │   └── README.md           # This module's docs
 └── README.md              # Root documentation
 ```
@@ -211,7 +216,7 @@ fileshare/
 
 
 
-A minimal login gateway is available under login/ and runs on port 8080 by default.
+A minimal login gateway is available under login/
 
 - Install and run:
   ```bash
@@ -221,8 +226,6 @@ A minimal login gateway is available under login/ and runs on port 8080 by defau
   ```
 - Open http://localhost:8080/login.htm
 - Default demo credentials: admin / Password123 (change in login/login.js)
-- On success it calls GET /run-script, which executes login/your_script.sh
-- your_script.sh should cd to your project root and start node uploadedFile.js
 
 Important: /run-script executes a shell script. Keep it for local/dev. For production, use a proper auth flow and a process manager (pm2/systemd) instead of executing shell from HTTP.
 
@@ -230,7 +233,7 @@ Important: /run-script executes a shell script. Keep it for local/dev. For produ
 
 ### Server Configuration
 
-Edit `uploadedFile.js` to modify:
+Edit `server.js` to modify:
 
 - **Port**: Change `const port = 3000;` to your preferred port
 - **Upload Directory**: Modify the `destination` in multer configuration
@@ -274,8 +277,8 @@ const upload = multer({
 
 ### Environment Variables
 
-[!IMPORTANT]
-Note that there is a .env file to configure to your liking!
+>[!IMPORTANT]
+>Note that there is a .env file to configure to your liking!
 
 ```env
 PORT=3000
@@ -316,10 +319,9 @@ This project is actively maintained. Feel free to report issues or suggest impro
 
 ---
 
-[!CAUTION]
-This application is intended for development and testing purposes and local use. For production use, please consider:
+>[!CAUTION]
+>This application is intended for development and testing purposes and local use. For >production use, please consider:
 
-- Adding authentication and authorization
 - Implementing file type validation
 - Adding virus scanning for uploads
 - Setting up proper HTTPS
