@@ -32,7 +32,7 @@ A simple yet powerful file sharing web application built with Node.js and Expres
 
 
 >[!NOTE]
->New update!! v1.2.0: Huge security update
+>New update!! v1.2.5: New loaders!!!
 
 ## 📦 Installation
 
@@ -192,6 +192,7 @@ GET /uploads/{filename}
 fileshare/
 ├── .env                    # Credentials and vars
 ├── auth-failed.htm    # auth fail page
+├── warning.htm        # warning page for log out
 ├── auth-failed.css    # style for fail page
 ├── server.js          # Main server file
 ├── fileshare.htm           # Main web interface

@@ -55,11 +55,7 @@ addEventListener("DOMContentLoaded", function () {
 
     if (logoutBtn) {
         logoutBtn.addEventListener('click', function () {
-            localStorage.setItem("auth", "false");
-
-            socket.emit("auth", "false");
-
-            window.location.replace("/login/login.htm");
+            window.location.replace("/warning.htm");
         });
     }
 

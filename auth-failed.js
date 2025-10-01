@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const reload_btn = document.getElementById('reload');
 
     if (reload_btn) {
-        reload_btn.addEventListener('click', () => window.location.reload());
+        reload_btn.addEventListener('click', () => window.location.replace('/loader.htm'));
     }
 
     if (link) {

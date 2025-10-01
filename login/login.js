@@ -10,7 +10,7 @@ function handleSubmit(event) {
     if (username === "admin" && password === "Password123") {
         socket.emit("auth", 'true');           // notify server
         localStorage.setItem("auth", "true");  // mark as logged in locally
-        window.location.href = "/fileshare.htm"; // redirect to file share
+        window.location.href = "/loader.htm"; // redirect to loader
     } else {
         alert("Wrong credentials, please try again.");
     }
