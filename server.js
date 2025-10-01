@@ -29,6 +29,19 @@ io.on("connection", (socket) => {
     socket.on("auth", (data) => {
         console.log("auth is " + data);
     })
+    socket.on("delete", (data) => {
+        const fs = require('fs');
+
+        const filePath = 'uploads/' + data;
+
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                console.error('Error deleting file:', err);
+                return;
+            }
+            console.log('File deleted successfully!');
+        });
+    });
 
 });
 

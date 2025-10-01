@@ -80,6 +80,7 @@ function loadfiles() {
             files.forEach(file => {
                 const listItem = document.createElement('li');
                 const Button = document.createElement('button');
+                const Button1 = document.createElement('button')
 
                 // Create download link
                 const downloadLink = document.createElement('a');
@@ -99,10 +100,14 @@ function loadfiles() {
 
                 // Style and configure the download button
                 Button.textContent = 'Download';
+                Button1.textContent = 'Remove';
                 Button.className = 'list-item-btn';
+                Button1.className = 'list-item-btn';
                 Button.setAttribute('data-filename', file);
 
                 // Add download functionality
+
+
                 Button.addEventListener('click', function () {
                     // Create a temporary link and trigger download
                     const tempLink = document.createElement('a');
@@ -113,8 +118,14 @@ function loadfiles() {
                     document.body.removeChild(tempLink);
                 });
 
+                Button1.addEventListener('click', function () {
+                    socket.emit("delete", file);
+                    loadfiles();
+                });
+
                 listItem.appendChild(downloadLink);
                 listItem.appendChild(Button);
+                listItem.appendChild(Button1);
                 fileListElement.appendChild(listItem);
             });
         })

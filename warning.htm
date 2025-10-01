@@ -22,7 +22,7 @@
                 <span class="title">Log out</span>
                 <p class="message">
                     Are you sure you want to log out? File server will be locked. This action can be unlock <a
-                        class="link">Need help?</a>.
+                        class="link" id="link">Need help?</a>.
                 </p>
             </div>
             <div class="actions">
@@ -34,7 +34,7 @@
 </body>
 <style>
     .link {
-        color: blue;
+        color: rgb(255, 255, 255);
     }
 
     body {
@@ -153,6 +153,7 @@
 
     const logoutBtn = document.getElementById('logout');
     const cancel = document.getElementById('cancel');
+    const link = document.getElementById('link');
 
     if (cancel) {
         cancel.addEventListener('click', function () {
@@ -173,4 +174,11 @@
             window.location.replace("/login/login.htm");
         });
     }
+
+    if (link) {
+        link.addEventListener('click', function () {
+            alert('To unlock fileserver when locked go to: http://localhost:3000/login/login.htm');
+        });
+    }
+
 </script>
