@@ -280,7 +280,7 @@ const upload = multer({
 ### Environment Variables
 
 >[!IMPORTANT]
->Note that there is a .env file to configure to your liking!
+>Note that make a .env file to configure to your liking!
 
 ```env
 PORT=3000
