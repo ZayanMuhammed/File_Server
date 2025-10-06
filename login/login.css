@@ -256,4 +256,278 @@
 
 body {
     background-color: #050505;
+    display: grid;
+    place-items: center;
+    /* Centers both horizontally and vertically */
+    min-height: 100vh;
+    /* Ensures body takes full viewport height for vertical centering */
+}
+
+.Forgot {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Glitch layers */
+.Forgot::before,
+.Forgot::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: var(--secondary-color);
+    background-color: var(--bg-color);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1;
+}
+
+/* Trigger existing glitch animation on hover */
+.Forgot:hover::before {
+    opacity: 1;
+    animation: glitch-anim var(--glitch-anim-duration) both;
+}
+
+.Forgot:hover::after {
+    opacity: 1;
+    color: var(--primary-color);
+    animation: glitch-anim var(--glitch-anim-duration) reverse both;
+}
+
+.notifications-container {
+    width: 320px;
+    height: auto;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
+
+/* Glitch theme variables, in case you want to keep them here */
+:root {
+    --bg-color: #0d0d0d;
+    --primary-color: #00f2ea;
+    --secondary-color: #a855f7;
+    --text-color: #e5e5e5;
+    --glitch-anim-duration: 0.5s;
+}
+
+.success {
+    padding: 1rem;
+    border-radius: 0.375rem;
+    background-color: var(--bg-color);
+    /* pitch black */
+    box-shadow:
+        0 0 20px rgba(0, 242, 234, 0.5),
+        inset 0 0 10px rgba(168, 85, 247, 0.3);
+    color: var(--text-color);
+    font-family: "Fira Code", Consolas, "Courier New", Courier, monospace;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glitch layers for heading */
+.success-prompt-heading {
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Glitch layers */
+.success-prompt-heading::before,
+.success-prompt-heading::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: var(--secondary-color);
+    background-color: var(--bg-color);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 2;
+}
+
+/* Glitch animation on heading */
+.success-prompt-heading:hover::before {
+    opacity: 1;
+    animation: glitch-anim var(--glitch-anim-duration) cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.success-prompt-heading:hover::after {
+    opacity: 1;
+    color: var(--primary-color);
+    animation: glitch-anim var(--glitch-anim-duration) cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+}
+
+.success-prompt-prompt {
+    margin-top: 0.5rem;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-family: inherit;
+}
+
+/* Glitch animation keyframes */
+@keyframes glitch-anim {
+    0% {
+        transform: translate(0);
+        clip-path: inset(0 0 0 0);
+    }
+
+    20% {
+        transform: translate(-5px, 3px);
+        clip-path: inset(50% 0 20% 0);
+    }
+
+    40% {
+        transform: translate(3px, -2px);
+        clip-path: inset(20% 0 60% 0);
+    }
+
+    60% {
+        transform: translate(-4px, 2px);
+        clip-path: inset(80% 0 5% 0);
+    }
+
+    80% {
+        transform: translate(4px, -3px);
+        clip-path: inset(30% 0 45% 0);
+    }
+
+    100% {
+        transform: translate(0);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.success-button-container {
+    display: flex;
+    margin-top: 1rem;
+    gap: 0.5rem;
+}
+
+.success-button-main,
+.success-button-secondary {
+    padding: 0.4rem 0.8rem;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glitch effect for buttons */
+.success-button-main:hover,
+.success-button-main:focus,
+.success-button-secondary:hover,
+.success-button-secondary:focus {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 20px var(--primary-color);
+    outline: none;
+}
+
+.success-button-main:active,
+.success-button-secondary:active {
+    transform: scale(0.97);
+}
+
+/* Glitch layers for buttons */
+.success-button-main::before,
+.success-button-main::after,
+.success-button-secondary::before,
+.success-button-secondary::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    background-color: var(--primary-color);
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.success-button-main:hover::before,
+.success-button-main:focus::before,
+.success-button-secondary:hover::before,
+.success-button-secondary:focus::before {
+    opacity: 1;
+    color: var(--secondary-color);
+    animation: glitch-anim var(--glitch-anim-duration) cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.success-button-main:hover::after,
+.success-button-main:focus::after,
+.success-button-secondary:hover::after,
+.success-button-secondary:focus::after {
+    opacity: 1;
+    color: var(--bg-color);
+    animation: glitch-anim var(--glitch-anim-duration) cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+}
+
+.success-button-main .btn-text,
+.success-button-secondary .btn-text {
+    position: relative;
+    z-index: 1;
+    transition: opacity 0.2s ease;
+}
+
+.success-button-main:hover .btn-text,
+.success-button-secondary:hover .btn-text {
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .success-prompt-heading::before,
+    .success-prompt-heading::after,
+    .success-button-main::before,
+    .success-button-main::after,
+    .success-button-secondary::before,
+    .success-button-secondary::after {
+        animation: none;
+        opacity: 0;
+    }
+
+    .success-button-main:hover .btn-text,
+    .success-button-secondary:hover .btn-text {
+        opacity: 1;
+    }
+}
+
+.input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #0d0d0d inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
 }

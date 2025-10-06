@@ -5,8 +5,7 @@ A simple yet powerful file sharing web application built with Node.js and Expres
 ![Status](https://img.shields.io/badge/status-active-00ffea?style=for-the-badge&logo=appveyor&logoColor=white&labelColor=000000)
 ![Node.js](https://img.shields.io/badge/Node.js-18+-3399ff?style=for-the-badge&logo=node.js&logoColor=white&labelColor=000000)
 ![License](https://img.shields.io/badge/License-MIT-ff3cac?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=000000)
-![Version](https://img.shields.io/badge/version-1.2.6-green?style=for-the-badge&logo=semantic-release&logoColor=white&labelColor=000000)
-![Repo Size](https://img.shields.io/badge/repo%20size-416K-ff9900?style=for-the-badge&logo=semantic-release&logoColor=white&labelColor=000000)
+![Version](https://img.shields.io/badge/version-1.2.7-green?style=for-the-badge&logo=semantic-release&logoColor=white&labelColor=000000)
 
 
 <img width="1214" height="619" alt="image" src="https://github.com/user-attachments/assets/a11c374d-cf31-4a96-819b-ee540e0ade83" />
@@ -22,6 +21,7 @@ A simple yet powerful file sharing web application built with Node.js and Expres
 - **Responsive Design**: Works on desktop and mobile devices
 - **Real-time Updates**: File list refreshes automatically after uploads
 - **Has Auth for Security**: check if login first then only allowed in page
+- **Recovery**: just in case if you for got your password
 
 ## 🛠️ Technology Stack
 
@@ -33,7 +33,7 @@ A simple yet powerful file sharing web application built with Node.js and Expres
 
 
 >[!NOTE]
->New update!! v1.2.6: New delete button!!!
+>New update!! v1.2.7: New recovery mode!!!
 
 ## 📦 Installation
 
@@ -192,6 +192,9 @@ GET /uploads/{filename}
 ```
 fileshare/
 ├── .env                    # Credentials and vars
+├── input.css
+├── output.css          # tailwind css file
+├── tailwind.config.js  #tailwind config
 ├── auth-failed.htm    # auth fail page
 ├── warning.htm        # warning page for log out
 ├── auth-failed.css    # style for fail page
@@ -208,6 +211,7 @@ fileshare/
 │   ├── login.htm           # Login page
 │   ├── login.css           # Login styles
 │   ├── login.js            # Login client logic
+|   ├── showPassword.htm    # forgot password show here
 │   └── README.md           # This module's docs
 └── README.md              # Root documentation
 ```
@@ -288,6 +292,7 @@ DB_HOST=localhost
 DB_USER=fileshare_user
 DB_PASSWORD=your_password
 DB=db_name
+DISABLE_RECOVERY=false
 ```
 
 ## 🤝 Contributing

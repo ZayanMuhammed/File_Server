@@ -6,10 +6,15 @@ const fs = require('fs');
 const { Server } = require('socket.io');
 const http = require('http');
 const dotenv = require('dotenv');
+const chalk = require('chalk');
 
 dotenv.config();
 
 const app = express();
+
+const Recovery = String(process.env.DISABLE_RECOVERY);
+
+console.log(Recovery);
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -17,17 +22,25 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-    console.log("user connected : " + socket.id);
+    console.log(chalk.default.green("user connected : " + socket.id));
 
+    socket.on('disconnect', () => {
+        console.log(chalk.default.red('user disconnected:', socket.id));
+    });
 
     socket.on("shutdown", (data) => {
         if (data === true) {
-            console.log("Shutting down gracefully...");
+            console.log('\x1b[31m%s\x1b[0m', "Shutting down gracefully... bye bye :P");
             process.exit(0);
         }
     });
     socket.on("auth", (data) => {
-        console.log("auth is " + data);
+        if (data == 'true') {
+            console.log(chalk.default.green('auth is ' + data));
+        }
+        else {
+            console.log(chalk.default.red('auth is ' + data));
+        }
     })
     socket.on("delete", (data) => {
         const fs = require('fs');
@@ -42,6 +55,22 @@ io.on("connection", (socket) => {
             console.log('File deleted successfully!');
         });
     });
+
+    socket.on("forget", (data) => {
+        console.log(Recovery);
+        if (Recovery == 'false') {
+            console.log(chalk.default.yellow("*****************Account Recovery****************"));
+            console.log("User: " + chalk.default.greenBright("recoveryadmin"));
+            console.log("Password: " + chalk.default.cyan(data));
+            console.log('\x1b[31m%s\x1b[0m', "WARNING: IF IT WAS NOT YOU TAKE PRECAUTION")
+            console.log(chalk.default.yellow('*************************************************'));
+        }
+    });
+
+    socket.on("recovery-auth", (data) => {
+        console.log("recovery-auth is " + data);
+    });
+
 
 });
 
